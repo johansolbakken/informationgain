@@ -1,1 +1,3 @@
-# informationgain
+# Information Gain
+
+![Application](image.png)
