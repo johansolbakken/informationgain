@@ -11,8 +11,13 @@ class InformationGainWidget(QWidget):
     def __init__(self):
         super().__init__()
 
+        self.setWindowTitle("Information Gain Calculator")
+
         layout = QVBoxLayout(self)
         self.setLayout(layout)
+
+        label = QLabel("Information Gain Calculator")
+        layout.addWidget(label)
 
         self.text_inputs = []
         self.result_label = QLabel()

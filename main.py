@@ -4,6 +4,7 @@ from PyQt6.QtGui import QIntValidator, QAction
 import sys
 
 from gui.entropy_gui import EntropyWidget
+from gui.pages.calculator_page import CalculatorPage
 from gui.pages.main_page import MainPage
 
 class MainWindow(QMainWindow):
@@ -19,7 +20,7 @@ class MainWindow(QMainWindow):
         main_page = MainPage(stacked_widget)
         stacked_widget.addWidget(main_page)
 
-        calculator_widget = EntropyWidget()
+        calculator_widget = CalculatorPage()
         stacked_widget.addWidget(calculator_widget)
 
         stacked_widget.setCurrentIndex(0)

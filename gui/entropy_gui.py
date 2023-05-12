@@ -11,8 +11,13 @@ class EntropyWidget(QWidget):
     def __init__(self):
         super().__init__()
 
+        self.setWindowTitle("Entropy Calculator")
+
         layout = QVBoxLayout(self)
         self.setLayout(layout)
+
+        label = QLabel("Entropy Calculator")
+        layout.addWidget(label)
 
         self.text_inputs = []
         self.result_label = QLabel()
