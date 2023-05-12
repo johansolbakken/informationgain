@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton
 
+
 class MainPage(QWidget):
     def __init__(self, stacked_widget):
         super().__init__()

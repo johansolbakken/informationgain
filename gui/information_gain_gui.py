@@ -1,11 +1,9 @@
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QLabel, QLineEdit, QPushButton, QHBoxLayout
-from PyQt6.QtCore import Qt
+import numpy as np
 from PyQt6.QtGui import QIntValidator
-import sys
+from PyQt6.QtWidgets import QVBoxLayout, QWidget, QLabel, QLineEdit, QPushButton, QHBoxLayout
 
 from information_gain import information_gain
 
-import numpy as np
 
 class InformationGainWidget(QWidget):
     def __init__(self):
