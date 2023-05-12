@@ -7,6 +7,17 @@ from decision_tree import DecisionTreeSpecification, read_specification, Decisio
 import os
 import sys
 
+"""
+TODO: I think that the decision tree does not consider multiple attributes. For example, if the specification is:
+    outlook: sunny, overcast, rainy
+    temperature: hot, mild, cool
+    humidity: high, normal
+    windy: true, false
+    play: yes, no
+Then the decision tree should consider all of the attributes, not just one. For example, the decision tree should
+Currently it only has two attributes per node. It should have all of the attributes per node.
+"""
+
 
 class DecisionTreePage(QWidget):
     def __init__(self):
@@ -43,7 +54,9 @@ class DecisionTreePage(QWidget):
         decision_tree = DecisionTree()
         decision_tree.train(specification)
 
-        save_decision_tree_as_graphviz(decision_tree.root, decision_tree.attributes, "decision_tree.dot",self.decision_tree_specification_file.split(".")[0].split("/")[len(self.decision_tree_specification_file.split(".")[0].split("/"))-1])
+        save_decision_tree_as_graphviz(decision_tree.root, decision_tree.attributes, "decision_tree.dot",
+                                       self.decision_tree_specification_file.split(".")[0].split("/")[
+                                           len(self.decision_tree_specification_file.split(".")[0].split("/")) - 1])
         graphwiz_to_png("decision_tree.dot")
         os.remove("decision_tree.dot")
 
