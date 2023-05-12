@@ -37,6 +37,7 @@ class InformationGainWidget(QWidget):
         calculate_button = QPushButton("Calculate")
         calculate_button.clicked.connect(self.calculate)
         layout.addWidget(calculate_button)
+        layout.addStretch(1)
 
     def add_text_input(self):
         text_input = QLineEdit()
