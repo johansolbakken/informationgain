@@ -43,7 +43,7 @@ class DecisionTreePage(QWidget):
         decision_tree = DecisionTree()
         decision_tree.train(specification)
 
-        save_decision_tree_as_graphviz(decision_tree.root, decision_tree.attributes, "decision_tree.dot")
+        save_decision_tree_as_graphviz(decision_tree.root, decision_tree.attributes, "decision_tree.dot",self.decision_tree_specification_file.split(".")[0].split("/")[len(self.decision_tree_specification_file.split(".")[0].split("/"))-1])
         graphwiz_to_png("decision_tree.dot")
         os.remove("decision_tree.dot")
 

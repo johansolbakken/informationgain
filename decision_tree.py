@@ -108,9 +108,10 @@ class DecisionTree:
         ]
 
 
-def save_decision_tree_as_graphviz(node: Node, attributes: list, filename: str):
+def save_decision_tree_as_graphviz(node: Node, attributes: list, filename: str, title: str="Decision Tree"):
     with open(filename, "w") as f:
         f.write("digraph G {\n")
+        f.write(f"\tgraph [label=\"{title}\", labelloc=t, fontsize=18];\n")
         f.write("\tnode [shape=box];\n")
         f.write("\tedge [fontsize=10];\n")
         f.write("\tgraph [ranksep=0.1];\n")
