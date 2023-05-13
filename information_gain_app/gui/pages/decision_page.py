@@ -1,10 +1,13 @@
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QGraphicsView, QFileDialog, QGraphicsScene
 
-from information_gain_app.decision_tree.decision_tree import read_specification, DecisionTree, save_decision_tree_as_graphviz, \
+from information_gain_app.decision_tree import decision_tree_graphwiz
+from information_gain_app.decision_tree.decision_tree import read_specification, DecisionTree, \
     graphwiz_to_png
 
 import os
+
+from information_gain_app.decision_tree.decision_tree_graphwiz import save_decision_tree_as_graphviz
 
 """
 TODO: I think that the decision tree does not consider multiple attributes. For example, if the specification is:
@@ -53,9 +56,12 @@ class DecisionTreePage(QWidget):
         decision_tree = DecisionTree()
         decision_tree.train(specification)
 
-        save_decision_tree_as_graphviz(decision_tree.root, decision_tree.attributes, "decision_tree.dot",
-                                       self.decision_tree_specification_file.split(".")[0].split("/")[
-                                           len(self.decision_tree_specification_file.split(".")[0].split("/")) - 1])
+        decision_tree_graphwiz.save_decision_tree_as_graphviz(decision_tree.root, decision_tree.attributes,
+                                                              "decision_tree.dot",
+                                                              self.decision_tree_specification_file.split(".")[0].split(
+                                                                  "/")[
+                                                                  len(self.decision_tree_specification_file.split(".")[
+                                                                          0].split("/")) - 1])
         graphwiz_to_png("decision_tree.dot")
         os.remove("decision_tree.dot")
 
