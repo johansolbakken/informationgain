@@ -26,8 +26,8 @@ class IndependenceGraphSpecification:
     def add_edge(self, edge: (str, str)):
         self.edges.append(edge)
 
-    def is_edge(self, node1: str, node2: str) -> bool:
-        return graph.matrix[self.nodes.index(node1)][self.nodes.index(node2)]
+    def is_edge(self, parent, node):
+        return (parent, node) in self.edges
 
 
 class IndependenceGraph:
@@ -152,12 +152,14 @@ def write_moralized_graph_to_graphwiz(graph: IndependenceGraph, filename: str, n
     independence = is_independent(graph, node1, node2, given)
     graphwiz = "graph {\n"
     graphwiz += f"\tlabel=\"{node1} and {node2} are {'independent' if independence else 'dependent'} given {given}\"\n"
+
     for i in range(len(new_graph.specification.nodes)):
         if new_graph.specification.nodes[i] in given:
             graphwiz += f"\t{new_graph.specification.nodes[i]} [penwidth=3]\n"
         if new_graph.specification.nodes[i] == node1 or new_graph.specification.nodes[i] == node2:
             graphwiz += f"\t{new_graph.specification.nodes[i]} [style=filled, fillcolor=lightgrey,penwidth=3]\n"
-        graphwiz += f"\t{new_graph.specification.nodes[i]}\n"
+        else:
+            graphwiz += f"\t{new_graph.specification.nodes[i]}\n"
     drawn_edges = []
     for i in range(len(new_graph.specification.nodes)):
         for j in range(len(new_graph.specification.nodes)):
@@ -169,32 +171,31 @@ def write_moralized_graph_to_graphwiz(graph: IndependenceGraph, filename: str, n
         file.write(graphwiz)
 
 
-if __name__ == "__main__":
+def graph_txt_parser(filename: str) -> IndependenceGraphSpecification:
+    nodes = set()
+    edges = set()
+
+    with open(filename, "r") as file:
+        for line in file.readlines():
+            line = line.strip()
+            n1, n2 = line.split(",")
+            n1 = n1.strip()
+            n2 = n2.strip()
+            nodes.add(n1)
+            nodes.add(n2)
+            edges.add((n1, n2))
+
     specification = IndependenceGraphSpecification()
-    specification.add_node("A")
-    specification.add_node("B")
-    specification.add_node("C")
-    specification.add_node("D")
-    specification.add_node("E")
-    specification.add_node("F")
-    specification.add_node("G")
-    specification.add_node("H")
-    specification.add_node("I")
-    specification.add_node("J")
+    for node in nodes:
+        specification.add_node(node)
+    for edge in edges:
+        specification.add_edge(edge)
+    return specification
 
-    specification.add_edge(("A", "D"))
-    specification.add_edge(("A", "E"))
-    specification.add_edge(("B", "E"))
-    specification.add_edge(("B", "F"))
-    specification.add_edge(("C", "F"))
-    specification.add_edge(("C", "G"))
-    specification.add_edge(("D", "I"))
-    specification.add_edge(("E", "H"))
-    specification.add_edge(("H", "I"))
-    specification.add_edge(("H", "J"))
 
+if __name__ == "__main__":
+    specification = graph_txt_parser("graphs/nihaograph.txt")
     graph = IndependenceGraph(specification)
-    print(is_independent(graph, "I", "G", ["F", "H", "D"], debug=True))
     write_moralized_graph_to_graphwiz(graph, "graph.dot", "I", "G", ["F", "H", "D"])
     write_independence_graph(graph, "independence_graph.dot")
     graphwiz_to_png("graph.dot")

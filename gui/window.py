@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import QMainWindow, QStackedWidget, QToolBar
 from PyQt6.QtGui import QAction
 
 from gui.pages import MainPage, DecisionTreePage, CalculatorPage
+from gui.pages.independence_graph import IndependenceGraphPage
 
 
 class MainWindow(QMainWindow):
@@ -23,6 +24,9 @@ class MainWindow(QMainWindow):
         decision_tree_widget = DecisionTreePage()
         stacked_widget.addWidget(decision_tree_widget)
 
+        independence_graph_widget = IndependenceGraphPage()
+        stacked_widget.addWidget(independence_graph_widget)
+
         stacked_widget.setCurrentIndex(0)
 
         self.create_toolbar()
@@ -43,6 +47,10 @@ class MainWindow(QMainWindow):
         decision_tree_page_action.triggered.connect(self.go_to_decision_tree_page)
         toolbar.addAction(decision_tree_page_action)
 
+        independence_graph_page_action = QAction("Independence Graph", self)
+        independence_graph_page_action.triggered.connect(self.go_to_independence_graph_page)
+        toolbar.addAction(independence_graph_page_action)
+
     def go_to_main_page(self):
         self.centralWidget().setCurrentIndex(0)
 
@@ -51,3 +59,6 @@ class MainWindow(QMainWindow):
 
     def go_to_decision_tree_page(self):
         self.centralWidget().setCurrentIndex(2)
+
+    def go_to_independence_graph_page(self):
+        self.centralWidget().setCurrentIndex(3)
