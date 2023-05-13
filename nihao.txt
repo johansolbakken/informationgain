@@ -1,5 +1,5 @@
 Sulten,Spist,SkalTrene,Etter22
 Ja,Ja,Nei,Nei,Ja
 Nei,Ja,Ja,Ja,Nei
-Ja,Ja,Ja,Ja,Nei
+Ja,Nei,Ja,Ja,Nei
 Nei,Ja,Nei,Ja,Ja
