@@ -124,6 +124,6 @@ if __name__ == "__main__":
     print("Predicting [Overcast, Cool, Normal, Strong]")
     print(decision_tree.predict(["Overcast", "Cool", "Normal", "Strong"]))
 
-    decision_tree_graphwiz.save_decision_tree_as_graphviz(decision_tree.root, decision_tree.attributes,
+    decision_tree_graphwiz.save_tree(decision_tree.root, decision_tree.attributes,
                                                           "decision_tree.dot")
     graphwiz_to_png("decision_tree.dot")

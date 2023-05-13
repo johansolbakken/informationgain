@@ -1,8 +1,7 @@
 from information_gain_app.decision_tree import decision_tree
 
 
-def save_decision_tree_as_graphviz(node: decision_tree.Node, attributes: list, filename: str,
-                                   title: str = "Decision Tree"):
+def save_tree(node: decision_tree.Node, attributes: list, filename: str, title: str = "Decision Tree"):
     with open(filename, "w") as f:
         f.write("digraph G {\n")
         f.write(f"\tgraph [label=\"{title}\", labelloc=t, fontsize=18];\n")
@@ -13,11 +12,11 @@ def save_decision_tree_as_graphviz(node: decision_tree.Node, attributes: list, f
         f.write("\tgraph [fontname=\"Arial\"];\n")
         f.write("\tnode [fontname=\"Arial\"];\n")
         f.write("\tedge [fontname=\"Arial\"];\n")
-        save_decision_tree_as_graphviz_helper(node, attributes, f)
+        save_tree_helper(node, attributes, f)
         f.write("}")
 
 
-def save_decision_tree_as_graphviz_helper(node: decision_tree.Node, attributes: list, f):
+def save_tree_helper(node: decision_tree.Node, attributes: list, f):
     if node.label is not None:
         f.write("\t\"{}\" [label=\"{}\"];\n".format(id(node), node.label))
         return
@@ -27,4 +26,4 @@ def save_decision_tree_as_graphviz_helper(node: decision_tree.Node, attributes: 
         f.write("\t\"{}\" -> \"{}\" [label=\"{}\"];\n".format(id(node), id(node.children[value]), value))
 
     for value in node.value:
-        save_decision_tree_as_graphviz_helper(node.children[value], attributes, f)
+        save_tree_helper(node.children[value], attributes, f)
