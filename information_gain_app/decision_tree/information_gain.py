@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def entropy(pop):
+def entropy(pop: np.ndarray):
     if sum(pop) == 0:
         return 0
     a = pop / sum(pop)
@@ -11,5 +11,5 @@ def entropy(pop):
     return - sum(a)
 
 
-def information_gain(pop):
+def information_gain(pop: np.ndarray):
     return 1 - entropy(pop)
