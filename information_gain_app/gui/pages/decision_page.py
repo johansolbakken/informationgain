@@ -1,11 +1,10 @@
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QGraphicsView, QFileDialog, QGraphicsScene
 
-from decision_tree import DecisionTreeSpecification, read_specification, DecisionTree, save_decision_tree_as_graphviz, \
+from information_gain_app.decision_tree.decision_tree import read_specification, DecisionTree, save_decision_tree_as_graphviz, \
     graphwiz_to_png
 
 import os
-import sys
 
 """
 TODO: I think that the decision tree does not consider multiple attributes. For example, if the specification is:

@@ -1,8 +1,10 @@
 from PyQt6.QtWidgets import QMainWindow, QStackedWidget, QToolBar
 from PyQt6.QtGui import QAction
 
-from gui.pages import MainPage, DecisionTreePage, CalculatorPage
-from gui.pages.independence_graph import IndependenceGraphPage
+from information_gain_app.gui.pages import CalculatorPage
+from information_gain_app.gui.pages.decision_page import DecisionTreePage
+from information_gain_app.gui.pages.independence_graph import IndependenceGraphPage
+from information_gain_app.gui.pages.main_page import MainPage
 
 
 class MainWindow(QMainWindow):

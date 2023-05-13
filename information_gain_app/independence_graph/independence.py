@@ -1,6 +1,6 @@
 import time
 
-from decision_tree import graphwiz_to_png
+from information_gain_app.decision_tree.decision_tree import graphwiz_to_png
 
 
 class Clock:
@@ -194,7 +194,7 @@ def graph_txt_parser(filename: str) -> IndependenceGraphSpecification:
 
 
 if __name__ == "__main__":
-    specification = graph_txt_parser("graphs/nihaograph.txt")
+    specification = graph_txt_parser("../graphs/nihaograph.txt")
     graph = IndependenceGraph(specification)
     write_moralized_graph_to_graphwiz(graph, "graph.dot", "I", "G", ["F", "H", "D"])
     write_independence_graph(graph, "independence_graph.dot")

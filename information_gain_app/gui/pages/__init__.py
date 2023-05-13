@@ -1,0 +1,1 @@
+from information_gain_app.gui.pages.calculator_page import CalculatorPage

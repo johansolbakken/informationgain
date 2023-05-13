@@ -2,19 +2,19 @@ import numpy as np
 from PyQt6.QtGui import QIntValidator
 from PyQt6.QtWidgets import QVBoxLayout, QWidget, QLabel, QLineEdit, QPushButton, QHBoxLayout
 
-from information_gain import entropy
+from information_gain_app.decision_tree.information_gain import information_gain
 
 
-class EntropyWidget(QWidget):
+class InformationGainWidget(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Entropy Calculator")
+        self.setWindowTitle("Information Gain Calculator")
 
         layout = QVBoxLayout(self)
         self.setLayout(layout)
 
-        label = QLabel("Entropy Calculator")
+        label = QLabel("Information Gain Calculator")
         layout.addWidget(label)
 
         self.text_inputs = []
@@ -56,5 +56,5 @@ class EntropyWidget(QWidget):
     def calculate(self):
         # Perform calculation here
         values = [int(text_input.text()) for text_input in self.text_inputs if text_input.text()]
-        result = entropy(np.array(values))
-        self.result_label.setText(f"Entropy: {result}")
+        result = information_gain(np.array(values))
+        self.result_label.setText(f"Information gain: {result}")

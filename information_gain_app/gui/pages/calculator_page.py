@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QLabel, QStackedWidget, QVBoxLayout, QWidget, QRadioButton, QButtonGroup
 
-from gui.entropy_gui import EntropyWidget
-from gui.information_gain_gui import InformationGainWidget
+from information_gain_app.gui.entropy_gui import EntropyWidget
+from information_gain_app.gui.information_gain_gui import InformationGainWidget
 
 
 class CalculatorPage(QWidget):

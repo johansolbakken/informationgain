@@ -1,5 +1,6 @@
-from information_gain import information_gain
 import numpy as np
+
+from information_gain_app.decision_tree.information_gain import information_gain
 
 
 class DecisionTreeSpecification:
@@ -108,7 +109,7 @@ class DecisionTree:
         ]
 
 
-def save_decision_tree_as_graphviz(node: Node, attributes: list, filename: str, title: str="Decision Tree"):
+def save_decision_tree_as_graphviz(node: Node, attributes: list, filename: str, title: str = "Decision Tree"):
     with open(filename, "w") as f:
         f.write("digraph G {\n")
         f.write(f"\tgraph [label=\"{title}\", labelloc=t, fontsize=18];\n")
@@ -144,7 +145,7 @@ def graphwiz_to_png(filename: str):
 
 
 if __name__ == "__main__":
-    spec = read_specification("weather.txt")
+    spec = read_specification("../trees/weather.txt")
     decision_tree = DecisionTree()
     decision_tree.train(spec)
     print("Decision Tree Trained")
