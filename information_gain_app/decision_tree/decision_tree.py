@@ -1,6 +1,7 @@
 import numpy as np
 
 from information_gain_app.decision_tree.information_gain import information_gain
+from information_gain_app.utils import graphwiz_to_png
 
 
 class DecisionTreeSpecification:
@@ -137,11 +138,6 @@ def save_decision_tree_as_graphviz_helper(node: Node, attributes: list, f):
 
     for value in node.value:
         save_decision_tree_as_graphviz_helper(node.children[value], attributes, f)
-
-
-def graphwiz_to_png(filename: str):
-    import os
-    os.system("dot -Tpng {} -o {}.png".format(filename, filename))
 
 
 if __name__ == "__main__":

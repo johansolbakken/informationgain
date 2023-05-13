@@ -1,6 +1,6 @@
 import time
 
-from information_gain_app.decision_tree.decision_tree import graphwiz_to_png
+from information_gain_app.utils import graphwiz_to_png
 
 
 class Clock:

@@ -4,10 +4,10 @@ from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton, QGraphicsView, QFileDialog, \
     QGraphicsScene, QHBoxLayout
 
-from information_gain_app.decision_tree.decision_tree import graphwiz_to_png
 from information_gain_app.gui.independence_graph_settings_widget import IndependenceGraphSettingsWidget
 from information_gain_app.independence_graph.independence import graph_txt_parser, IndependenceGraph, \
     write_moralized_graph_to_graphwiz, write_independence_graph
+from information_gain_app.utils import graphwiz_to_png
 
 
 class IndependenceGraphPage(QWidget):
